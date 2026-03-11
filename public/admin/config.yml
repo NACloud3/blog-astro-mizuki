@@ -1,0 +1,85 @@
+backend:
+  name: github
+  repo: NACloud3/blog-astro-mizuki
+  branch: main
+  # Optional when using self-hosted OAuth for GitHub backend:
+  # base_url: https://your-oauth-service.example.com
+  # auth_endpoint: auth
+
+# Enable local Decap workflow via `npx decap-server`.
+local_backend: true
+
+site_url: https://nacloud3.github.io/blog-astro-mizuki/
+display_url: https://nacloud3.github.io/blog-astro-mizuki/
+
+publish_mode: editorial_workflow
+
+media_folder: "public/assets/uploads"
+public_folder: "/assets/uploads"
+
+editor:
+  preview: false
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: src/content/posts
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    path: "{{slug}}/index"
+    summary: "{{title}} | {{published}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Published
+        name: published
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: YYYY-MM-DD
+        time_format: false
+      - label: Updated
+        name: updated
+        widget: datetime
+        required: false
+        format: YYYY-MM-DD
+        date_format: YYYY-MM-DD
+        time_format: false
+      - { label: Description, name: description, widget: text, required: false }
+      - { label: Cover Image, name: image, widget: image, required: false, allow_multiple: false }
+      - { label: Tags, name: tags, widget: list, required: false, default: [] }
+      - { label: Category, name: category, widget: string, required: false }
+      - { label: Language, name: lang, widget: string, required: false }
+      - { label: Author, name: author, widget: string, required: false }
+      - { label: Source Link, name: sourceLink, widget: string, required: false }
+      - { label: License Name, name: licenseName, widget: string, required: false }
+      - { label: License URL, name: licenseUrl, widget: string, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+      - { label: Pinned, name: pinned, widget: boolean, default: false, required: false }
+      - { label: Enable Comment, name: comment, widget: boolean, default: true, required: false }
+      - { label: Priority, name: priority, widget: number, value_type: int, required: false }
+      - { label: Encrypted, name: encrypted, widget: boolean, default: false, required: false }
+      - { label: Password, name: password, widget: string, required: false }
+      - { label: Alias, name: alias, widget: string, required: false }
+      - { label: Permalink, name: permalink, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: spec_pages
+    label: Spec Pages
+    files:
+      - label: About Page
+        name: about
+        file: src/content/spec/about.md
+        fields:
+          - { label: Body, name: body, widget: markdown }
+      - label: Friends Page
+        name: friends
+        file: src/content/spec/friends.md
+        fields:
+          - { label: Body, name: body, widget: markdown }
