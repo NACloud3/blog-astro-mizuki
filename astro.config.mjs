@@ -1,3 +1,4 @@
+import node from "@astrojs/node";
 import sitemap from "@astrojs/sitemap";
 import svelte, { vitePreprocess } from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
@@ -7,6 +8,7 @@ import swup from "@swup/astro";
 import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
+import decapCmsOauth from "astro-decap-cms-oauth";
 import { umami } from "oddmisc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components";
@@ -32,12 +34,16 @@ import { remarkFixGithubAdmonitions } from "./src/plugins/remark-fix-github-admo
 // https://astro.build/config
 export default defineConfig({
 	site: siteConfig.siteURL,
-	base: "/blog-astro-mizuki/",
+	base: "/",
 	trailingSlash: "always",
 
-	output: "static",
+	output: "server",
+	adapter: node({
+		mode: "standalone",
+	}),
 
 	integrations: [
+		decapCmsOauth(),
 		umami({
 			shareUrl: false,
 		}),

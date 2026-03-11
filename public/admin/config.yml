@@ -2,15 +2,12 @@ backend:
   name: github
   repo: NACloud3/blog-astro-mizuki
   branch: main
-  # Optional when using self-hosted OAuth for GitHub backend:
-  # base_url: https://your-oauth-service.example.com
-  # auth_endpoint: auth
+  site_domain: sweecidal.icu
+  base_url: https://sweecidal.icu
+  auth_endpoint: oauth
 
-# Enable local Decap workflow via `npx decap-server`.
-local_backend: true
-
-site_url: https://nacloud3.github.io/blog-astro-mizuki/
-display_url: https://nacloud3.github.io/blog-astro-mizuki/
+site_url: https://sweecidal.icu/
+display_url: https://sweecidal.icu/
 
 publish_mode: editorial_workflow
 
