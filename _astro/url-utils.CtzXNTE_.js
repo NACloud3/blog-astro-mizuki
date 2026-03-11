@@ -1,0 +1,1 @@
+import"./config.BrWpppOJ.js";import"./zh_TW.B395Vq90.js";function u(o,r){const e=o.replace(/^\/|\/$/g,"").toLowerCase(),n=r.replace(/^\/|\/$/g,"").toLowerCase();return e===n}function t(...o){return o.join("/").replace(/\/+/g,"/")}function c(o){return t("","/blog-astro-mizuki/",o)}export{u as p,c as u};
